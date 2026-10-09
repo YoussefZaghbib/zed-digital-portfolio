@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZED Digital · Portfolio</title>
+<meta name="description" content="ZED Digital, agence créative et stratégique. Stratégie, branding, contenu et production, pensés entre Tunis, Dubaï et Bali.">
+<meta property="og:title" content="ZED Digital · Portfolio">
+<meta property="og:description" content="On construit l'image des marques, de la stratégie jusqu'à la pièce finale.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2315130F'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-weight='700' fill='%23D8C9A8' text-anchor='middle'%3EZ%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Plus Jakarta Sans',sans-serif;background:#15130F;color:#F4F1E9}
+a{color:#F4F1E9;text-decoration:none;transition:color .25s ease}
+a:hover{color:#D8C9A8}
+.zd-nav-link{position:relative;padding-bottom:4px}
+.zd-nav-link:after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:#D8C9A8;transition:width .3s ease}
+.zd-nav-link:hover:after{width:100%}
+.zd-cta{transition:transform .25s ease,background .25s ease}
+.zd-cta:hover{transform:translateY(-2px)}
+.zd-pill{transition:background .25s ease,color .25s ease,border-color .25s ease,transform .25s ease}
+.zd-pill:hover{border-color:#D8C9A8;transform:translateY(-1px)}
+.zd-service:hover .zd-service-name{color:#D8C9A8;padding-left:8px}
+.zd-service-name{transition:color .25s ease,padding-left .25s ease}
+.zd-slot{transition:border-color .3s ease,background .3s ease,transform .3s cubic-bezier(.16,1,.3,1)}
+.zd-slot:hover{border-color:#D8C9A8;background:rgba(216,201,168,.04);transform:translateY(-4px)}
+
+/* ---- entrance choreography ---- */
+.zd-preloader{position:fixed;inset:0;z-index:999;background:#15130F;display:flex;align-items:center;justify-content:center;animation:zdPreloaderOut .4s ease .55s forwards}
+.zd-preloader-mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(1.4rem,3vw,1.9rem);letter-spacing:.14em;color:#D8C9A8;animation:zdMarkPulse .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes zdMarkPulse{0%{opacity:0;transform:scale(.86)}65%{opacity:1;transform:scale(1.035)}100%{opacity:1;transform:scale(1)}}
+@keyframes zdPreloaderOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.zd-nav{animation:zdNavIn .6s cubic-bezier(.16,1,.3,1) 1s both}
+@keyframes zdNavIn{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes zdRise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+.zd-rise-1{animation:zdRise .9s cubic-bezier(.16,1,.3,1) 1.05s both}
+.zd-rise-2{animation:zdRise .9s cubic-bezier(.16,1,.3,1) 1.2s both}
+.zd-rise-3{animation:zdRise .9s cubic-bezier(.16,1,.3,1) 1.35s both}
+.zd-rise-4{animation:zdRise .9s cubic-bezier(.16,1,.3,1) 1.5s both}
+@keyframes zdDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-28px) scale(1.08)}}
+.zd-glow{animation:zdDrift 14s ease-in-out infinite}
+@keyframes zdBob{0%,100%{transform:translateY(0);opacity:.45}50%{transform:translateY(8px);opacity:.9}}
+.zd-scrollcue{animation:zdBob 2.2s ease-in-out infinite}
+button.zd-cta{font-family:'Space Grotesk',sans-serif;border:none;cursor:pointer}
+
+/* ---- cursor glow (hero only) ---- */
+.zd-cursor-glow{position:absolute;top:0;left:0;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(216,201,168,.16) 0%,rgba(216,201,168,0) 72%);filter:blur(6px);pointer-events:none;opacity:0;transition:opacity .35s ease,transform .12s linear;z-index:1}
+
+/* ---- film grain ---- */
+.zd-grain{position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---- scroll reveals ---- */
+.zd-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.zd-reveal.zd-in{opacity:1;transform:translateY(0)}
+
+/* ---- marquee ---- */
+.zd-marquee{overflow:hidden;white-space:nowrap;padding:20px 0}
+.zd-marquee-track{display:inline-flex;animation:zdMarquee 30s linear infinite}
+.zd-marquee-track span{display:inline-flex;align-items:center;gap:32px;padding-right:32px;font-family:'Space Grotesk',sans-serif;font-size:.92rem;letter-spacing:.05em;color:#6B6557;white-space:nowrap}
+.zd-marquee-track span i{opacity:.5;font-style:normal;font-size:.7rem;color:#D8C9A8}
+@keyframes zdMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---- category grid + switch transition ---- */
+.zd-cat-content{transition:opacity .22s ease,transform .22s ease}
+.zd-cat-content.zd-switching{opacity:0;transform:translateY(10px) scale(.98)}
+.zd-work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.zd-work-grid .zd-slot:first-child{grid-column:span 2;aspect-ratio:16/9}
+@media (max-width:680px){.zd-work-grid .zd-slot:first-child{grid-column:span 1;aspect-ratio:4/5}}
+
+/* ---- video slots (Travaux) ---- */
+.zd-video-slot{aspect-ratio:4/5;position:relative;overflow:hidden;background:#000;border:1px solid rgba(244,241,233,.12)}
+.zd-video{width:100%;height:100%;object-fit:cover;display:block}
+.zd-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 58%,rgba(0,0,0,.5) 100%);pointer-events:none}
+.zd-play-badge{position:absolute;left:14px;bottom:14px;width:32px;height:32px;border-radius:50%;background:rgba(21,19,15,.55);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;transition:opacity .25s ease,transform .25s ease;pointer-events:none}
+.zd-video-slot:hover .zd-play-badge{opacity:0;transform:scale(.8)}
+.zd-video-slot{cursor:pointer}
+.zd-lightbox{position:fixed;inset:0;z-index:999;display:flex;align-items:center;justify-content:center;background:rgba(10,9,7,.9);backdrop-filter:blur(6px);padding:5vh 20px;animation:zd-lb-in .2s ease}
+.zd-lightbox[hidden]{display:none}
+@keyframes zd-lb-in{from{opacity:0}to{opacity:1}}
+.zd-lightbox-inner{position:relative;max-width:420px;width:100%;max-height:90vh}
+.zd-lightbox-inner video{width:100%;max-height:90vh;display:block;border-radius:4px;background:#000}
+.zd-lightbox-close{position:absolute;top:-44px;right:0;width:36px;height:36px;border-radius:50%;background:rgba(244,241,233,.1);border:1px solid rgba(244,241,233,.25);display:flex;align-items:center;justify-content:center;cursor:pointer;color:#F4F1E9;transition:background .2s ease}
+.zd-lightbox-close:hover{background:rgba(244,241,233,.2)}
+.zd-coming-soon{border:1px dashed rgba(244,241,233,.25);border-radius:2px;padding:clamp(56px,9vh,96px) 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+
+@media (prefers-reduced-motion:reduce){
+.zd-rise-1,.zd-rise-2,.zd-rise-3,.zd-rise-4,.zd-glow,.zd-scrollcue,.zd-nav,.zd-preloader-mark{animation:none;opacity:1;transform:none}
+.zd-preloader{display:none}
+.zd-marquee-track{animation:none}
+.zd-cursor-glow{display:none}
+.zd-reveal{opacity:1;transform:none;transition:none}
+.zd-cat-content.zd-switching{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div style="width:100%;min-height:100vh;background:#15130F;overflow-x:hidden;position:relative">
+
+<div class="zd-preloader" aria-hidden="true"><div class="zd-preloader-mark">ZED DIGITAL</div></div>
+<div class="zd-grain" aria-hidden="true"></div>
+
+<div class="zd-nav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(20px,5vw,64px);background:rgba(21,19,15,.85);backdrop-filter:blur(10px);border-bottom:1px solid rgba(244,241,233,.08)">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.02em">ZED DIGITAL</div>
+<div style="display:flex;align-items:center;gap:clamp(16px,3vw,40px);font-size:.95rem">
+<a class="zd-nav-link" href="#services">Services</a>
+<a class="zd-nav-link" href="#travaux">Travaux</a>
+<a class="zd-nav-link" href="#approche">Approche</a>
+<a class="zd-cta" href="#contact" style="padding:14px 22px;border:1px solid #D8C9A8;border-radius:2px;font-size:.9rem">Démarrer un projet</a>
+</div>
+</div>
+
+<div id="hero" style="position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(100px,14vh,160px) clamp(20px,5vw,64px) 80px;overflow:hidden">
+<div class="zd-glow" style="position:absolute;top:10%;right:8%;width:46vw;height:46vw;max-width:620px;max-height:620px;border-radius:50%;background:radial-gradient(circle,rgba(216,201,168,.16) 0%,rgba(216,201,168,0) 70%);filter:blur(40px);pointer-events:none"></div>
+<div id="zd-cursor-glow" class="zd-cursor-glow"></div>
+<div style="position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%">
+<div class="zd-rise-1" style="font-size:clamp(1rem,1.6vw,1.15rem);color:#9C9484;margin-bottom:20px;max-width:46ch">Agence créative et stratégique</div>
+<h1 class="zd-rise-2" style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(2.6rem,7vw,6rem);line-height:1.02;letter-spacing:-.01em">De A jusqu'à <span style="color:#D8C9A8">ZED</span>.</h1>
+<p class="zd-rise-3" style="max-width:54ch;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.6;color:#C9C3B5;margin:32px 0 0">On construit l'image des marques, de la stratégie jusqu'à la pièce finale. Stratégie, branding, contenu et production, pensés entre Tunis, Dubaï et Bali.</p>
+<div class="zd-rise-4" style="margin-top:44px;color:#9C9484;font-size:.9rem">Voir le travail ci-dessous</div>
+</div>
+<div class="zd-scrollcue" style="position:absolute;bottom:36px;left:50%;transform:translateX(-50%)">
+<svg width="20" height="28" viewBox="0 0 20 28" fill="none"><path d="M10 2V24M10 24L2 16M10 24L18 16" stroke="#9C9484" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</div>
+</div>
+
+<div class="zd-marquee" style="border-top:1px solid rgba(244,241,233,.08);border-bottom:1px solid rgba(244,241,233,.08)">
+<div class="zd-marquee-track">
+<span>STRATÉGIE <i>◆</i> BRANDING <i>◆</i> CONTENU <i>◆</i> PRODUCTION VIDÉO <i>◆</i> SOCIAL MEDIA <i>◆</i> CAMPAGNES <i>◆</i> TUNIS <i>◆</i> DUBAÏ <i>◆</i> BALI <i>◆</i></span>
+<span>STRATÉGIE <i>◆</i> BRANDING <i>◆</i> CONTENU <i>◆</i> PRODUCTION VIDÉO <i>◆</i> SOCIAL MEDIA <i>◆</i> CAMPAGNES <i>◆</i> TUNIS <i>◆</i> DUBAÏ <i>◆</i> BALI <i>◆</i></span>
+</div>
+</div>
+
+<div data-reveal-group style="padding:clamp(70px,10vh,120px) clamp(20px,5vw,64px)">
+<div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;gap:48px">
+<h2 class="zd-reveal" style="flex:1 1 320px;margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.15">Pas juste du contenu.</h2>
+<p class="zd-reveal" style="flex:1 1 420px;max-width:58ch;margin:0;font-size:1.1rem;line-height:1.7;color:#C9C3B5">On ne vend pas des publications. On construit des marques plus désirables, plus cohérentes et plus reconnaissables, avec un œil artistique et une logique de performance qui ne s'excluent jamais. Chaque projet part d'un problème réel, jamais d'une liste de services.</p>
+</div>
+</div>
+
+<div id="services" style="padding:clamp(70px,10vh,120px) clamp(20px,5vw,64px);background:#1C1914;border-top:1px solid rgba(244,241,233,.08)">
+<div style="max-width:1180px;margin:0 auto">
+<h2 style="margin:0 0 56px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.5rem)">Ce qu'on fait</h2>
+<div data-reveal-group style="display:flex;flex-direction:column">
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Stratégie & positionnement</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Clarifier qui vous êtes, pour qui, et pourquoi on devrait vous choisir.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Branding & direction artistique</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Construire un univers visuel reconnaissable, pas juste un logo.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Social media management</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Gérer vos comptes avec une vraie ligne éditoriale, pas au hasard.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Création de contenu & photographie</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Produire des visuels qui donnent envie de s'arrêter de scroller.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Production vidéo & Reels</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Storytelling court et formats natifs, pensés pour la portée organique.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Campagnes créatives</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Des concepts qui sortent du calendrier éditorial classique.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Influence & UGC</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Des collaborations qui servent la marque, pas seulement la visibilité.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">Publicité & sponsoring</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Transformer l'attention en résultats mesurables.</div>
+</div>
+
+<div class="zd-service zd-reveal" style="display:flex;flex-wrap:wrap;gap:8px 32px;padding:26px 0;border-top:1px solid rgba(244,241,233,.1);border-bottom:1px solid rgba(244,241,233,.1)">
+<div class="zd-service-name" style="flex:1 1 280px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.2rem">E-commerce & Shopify</div>
+<div style="flex:2 1 380px;max-width:56ch;color:#9C9484;font-size:1rem;line-height:1.6">Structurer la vente en ligne, de la fiche produit au tunnel d'achat.</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="travaux" style="padding:clamp(70px,10vh,120px) clamp(20px,5vw,64px)">
+<div style="max-width:1180px;margin:0 auto">
+<div data-reveal-group>
+<h2 class="zd-reveal" style="margin:0 0 16px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.5rem)">Travaux</h2>
+<p class="zd-reveal" style="margin:0 0 32px;max-width:58ch;color:#9C9484;font-size:1.05rem;line-height:1.6">Organisés par univers, pas par client, pour voir d'un coup d'œil le type de contenu qu'on sait produire.</p>
+<div class="zd-reveal" style="display:flex;flex-wrap:wrap;gap:28px 48px;margin:0 0 48px;padding:22px 0;border-top:1px solid rgba(244,241,233,.08);border-bottom:1px solid rgba(244,241,233,.08)">
+<div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.7rem;color:#D8C9A8" id="zd-total-count">62</div><div style="font-size:.76rem;color:#716B5D;letter-spacing:.04em;margin-top:2px">PROJETS EN LIGNE</div></div>
+<div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.7rem;color:#D8C9A8">5</div><div style="font-size:.76rem;color:#716B5D;letter-spacing:.04em;margin-top:2px">UNIVERS CRÉATIFS</div></div>
+<div><div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.7rem;color:#D8C9A8">3</div><div style="font-size:.76rem;color:#716B5D;letter-spacing:.04em;margin-top:2px">VILLES · TUNIS, DUBAÏ, BALI</div></div>
+</div>
+</div>
+
+<div id="zd-pills" style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:24px"></div>
+
+<div id="zd-active-desc" style="margin-bottom:32px;color:#9C9484;font-size:1rem;line-height:1.6;max-width:56ch"></div>
+
+<div id="zd-cat-content" class="zd-cat-content">
+<div class="zd-work-grid" id="zd-work-grid"></div>
+<div class="zd-coming-soon" id="zd-coming-soon" style="display:none">
+<svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M13 3V23M3 13H23" stroke="#9C9484" stroke-width="1.4" stroke-linecap="round"></path></svg>
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1.05rem;color:#D8C9A8">Bientôt disponible</div>
+<div style="color:#9C9484;font-size:.92rem;max-width:40ch" id="zd-coming-soon-text"></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="univers" style="padding:clamp(70px,10vh,120px) clamp(20px,5vw,64px);border-top:1px solid rgba(244,241,233,.08)">
+<div style="max-width:1180px;margin:0 auto">
+<div data-reveal-group>
+<h2 class="zd-reveal" style="margin:0 0 16px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.5rem)">Au-delà de la vidéo</h2>
+<p class="zd-reveal" style="margin:0 0 40px;max-width:58ch;color:#9C9484;font-size:1.05rem;line-height:1.6">Un aperçu du travail de direction artistique, de stratégie de contenu et de design de feed : moodboards, identité visuelle et grilles Instagram.</p>
+<div class="zd-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:20px">
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:4/5;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/editorial.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+</div>
+<div style="padding:16px 18px 20px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Direction artistique</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Shooting éditorial, de la mise en scène à la retouche finale.</div>
+</div>
+</div>
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:4/5;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/moodboard.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block">
+</div>
+<div style="padding:16px 18px 20px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Stratégie visuelle</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Moodboards et direction de campagne avant chaque tournage.</div>
+</div>
+</div>
+
+</div>
+
+<div class="zd-reveal" style="display:flex;flex-direction:column;gap:18px">
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:3/1;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/pi-row.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div style="padding:14px 18px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Pi, Pizza and More</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Un aperçu de leur feed Instagram, pensé plat par plat.</div>
+</div>
+</div>
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:3/1;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/pitagore-row.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div style="padding:14px 18px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Pita-Gore</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Leur grille Instagram, entre street food et identité grecque.</div>
+</div>
+</div>
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:900/365;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/feed-examples.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div style="padding:14px 18px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Exemples de design de feed</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Trois univers, trois grilles pensées comme des moodboards vivants.</div>
+</div>
+</div>
+
+<div class="zd-slot" style="border:1px solid rgba(244,241,233,.12);overflow:hidden">
+<div style="aspect-ratio:900/365;overflow:hidden;background:#000">
+<img src="assets/sneakpeeks/graphic-design.jpg" alt="" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+<div style="padding:14px 18px">
+<div style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#D8C9A8;margin-bottom:4px">Direction graphique</div>
+<div style="font-size:.9rem;color:#9C9484;line-height:1.5">Visuels social media, du produit à l'événementiel.</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="approche" style="padding:clamp(70px,10vh,120px) clamp(20px,5vw,64px);background:#1C1914;border-top:1px solid rgba(244,241,233,.08)">
+<div style="max-width:1180px;margin:0 auto">
+<h2 style="margin:0 0 56px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(1.8rem,3.2vw,2.5rem)">Pourquoi ZED</h2>
+<div data-reveal-group style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:44px 40px">
+
+<div class="zd-reveal">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.25rem;color:#D8C9A8;margin-bottom:12px">Un œil artistique</div>
+<div style="color:#C9C3B5;font-size:1rem;line-height:1.6">La direction artistique n'est jamais une case à cocher après coup.</div>
+</div>
+
+<div class="zd-reveal">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.25rem;color:#D8C9A8;margin-bottom:12px">Une expérience multiculturelle</div>
+<div style="color:#C9C3B5;font-size:1rem;line-height:1.6">Tunis, Dubaï, Bali : trois marchés, trois sensibilités, un seul niveau d'exigence.</div>
+</div>
+
+<div class="zd-reveal">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.25rem;color:#D8C9A8;margin-bottom:12px">Stratégie et créativité, ensemble</div>
+<div style="color:#C9C3B5;font-size:1rem;line-height:1.6">Un concept qui ne sert aucun objectif commercial n'est qu'une idée.</div>
+</div>
+
+<div class="zd-reveal">
+<div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:1.25rem;color:#D8C9A8;margin-bottom:12px">Désirabilité avant tout</div>
+<div style="color:#C9C3B5;font-size:1rem;line-height:1.6">On construit l'envie avant de pousser la vente.</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="contact" style="padding:clamp(80px,12vh,140px) clamp(20px,5vw,64px);border-top:1px solid rgba(244,241,233,.08)">
+<div data-reveal-group style="max-width:780px;margin:0 auto;text-align:left">
+<h2 class="zd-reveal" style="margin:0 0 20px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.15">On construit quelque chose ensemble ?</h2>
+<p class="zd-reveal" style="margin:0 0 40px;color:#9C9484;font-size:1.1rem;max-width:50ch">Parlons de votre marque.</p>
+
+<div class="zd-reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:16px">
+<input id="zd-form-prenom" type="text" placeholder="Prénom" style="display:block;background:transparent;border:1px solid rgba(244,241,233,.25);border-radius:2px;padding:14px 16px;color:#F4F1E9;font-size:.95rem;font-family:inherit;width:100%;box-sizing:border-box">
+<input id="zd-form-nom" type="text" placeholder="Nom" style="display:block;background:transparent;border:1px solid rgba(244,241,233,.25);border-radius:2px;padding:14px 16px;color:#F4F1E9;font-size:.95rem;font-family:inherit;width:100%;box-sizing:border-box">
+</div>
+<input id="zd-form-tel" type="tel" placeholder="Numéro de téléphone" style="display:block;background:transparent;border:1px solid rgba(244,241,233,.25);border-radius:2px;padding:14px 16px;color:#F4F1E9;font-size:.95rem;font-family:inherit;width:100%;box-sizing:border-box;margin-bottom:16px">
+<textarea id="zd-form-projet" placeholder="Quel est votre projet ?" rows="4" style="display:block;background:transparent;border:1px solid rgba(244,241,233,.25);border-radius:2px;padding:14px 16px;color:#F4F1E9;font-size:.95rem;font-family:inherit;width:100%;box-sizing:border-box;margin-bottom:24px;resize:vertical"></textarea>
+
+<button type="button" id="zd-form-submit" class="zd-reveal zd-cta" style="display:inline-block;padding:16px 36px;background:#D8C9A8;color:#15130F;border-radius:2px;font-weight:500;font-size:1rem;margin-bottom:14px">Envoyer</button>
+<p class="zd-reveal" style="margin:0 0 36px;color:#716B5D;font-size:.8rem;max-width:46ch;line-height:1.5">Votre messagerie s'ouvre avec le message déjà rédigé : vous n'avez plus qu'à l'envoyer.</p>
+
+<div class="zd-reveal" style="display:flex;flex-direction:column;gap:6px;color:#9C9484;font-size:.95rem">
+<a href="mailto:contact@zed-collection.com" style="color:#9C9484">contact@zed-collection.com</a>
+<a href="https://instagram.com/zed__digital" target="_blank" rel="noopener" style="color:#9C9484">@zed__digital</a>
+</div>
+</div>
+</div>
+
+<div style="padding:32px clamp(20px,5vw,64px);border-top:1px solid rgba(244,241,233,.08);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:#716B5D;font-size:.85rem">
+<div>ZED DIGITAL. De A jusqu'à ZED.</div>
+<div>Tunis, Dubaï, Bali</div>
+</div>
+
+</div>
+
+<!-- Lightbox: real, playable video -->
+<div class="zd-lightbox" id="zd-lightbox" hidden>
+<div class="zd-lightbox-inner">
+<button type="button" class="zd-lightbox-close" id="zd-lightbox-close" aria-label="Fermer">
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="#F4F1E9" stroke-width="1.4" stroke-linecap="round"></path></svg>
+</button>
+<video id="zd-lightbox-video" controls playsinline></video>
+</div>
+</div>
+
+<script>
+/* ---------------------------------------------------------------
+   Data: category id -> {label, desc, count}; REELS_BY_CATEGORY lists
+   the numeric ids that belong to each category. VIDEOS maps each
+   numeric id to the asset's content hash, used for BOTH
+   assets/videos/<hash>.mp4 and assets/posters/<hash>.jpg. Kept in
+   sync with Main.dc.html's videoAssets/reelsByCategory by hand;
+   only ids actually referenced below have asset files on disk.
+------------------------------------------------------------------ */
+const VIDEOS = {
+  2:'8207ad40a2728d3d42499745368671d7', 3:'105c31d49c47cef284aacb21c2b52388', 4:'746c79bd223ff4340bc807c2b7e6d0c0',
+  5:'eea44921920a067eaafa8ae51b2a0161', 6:'9b7a48dc392c8213a71c8d6f57916237', 7:'8153b176da64076519c4dd7dd6f0a2df',
+  8:'5879d14566ac5036a33db30aea232b85', 9:'43446a6ee2f7575109024d3780819753', 10:'16c661d8fc3fa9da86a111e650a4bcc4',
+  11:'24c0eeb25f23dffb80a6552cc98353ae', 12:'5bf50b4bc3d1121ad6037b20176bd4ac', 13:'682b5bfd36a482df7648f0ddd899a53d',
+  14:'2adf70a0166c59361c23285a3ff9abd2', 15:'cd4c3fb2d1215cd0dd6008af4bc06238', 16:'c302cd6a31eaaef2deb2ff01371cbca8',
+  17:'ab4f4811d16fb96124f5e20b1741a52f', 18:'d6396de35abec58ff0cdbe5eb8cd4dde', 19:'e49559aaa2d3461a9c48d6b71b779f2e',
+  20:'bf4a872eb600373053c1d4ad5c86b156', 21:'6f846b57891794693dfcb921dc51e010', 22:'a0ebbba1ca120807e5ed652557173b03',
+  23:'90c6b398e9c14a3ae6bb9c29955b12d1', 24:'cddce55d531eff6254038dd7c93592a1', 25:'d787724c5036e7546c7373760e27b019',
+  26:'f52a1440da247c48b7e7094901a55597', 27:'d5c1e85b8c5b612774b63e77a1f07c47', 28:'1eda81ef39d4f928baafe7def6fa6cdb',
+  29:'b0498cdd9632e30c9c66bcdbded6ebcf', 30:'0617437c4446d8fed488fb84fce0a7d9', 31:'5d701b5fa69e1fa937f99b8dc80cf9e6',
+  32:'86dd56863dcd77c09735aec14c40bb7a', 33:'17d36d8cbf5c08608b50f8ef3b2fb465', 34:'c4bdade04da5b03490683d23d9580955',
+  35:'f26e54fd9d9468d6c020e6ab3de97b82', 36:'dce6867fb75dd36ba43a772e7a86bc96', 37:'b4cce665d0bf2c54bbf061bd5fc0e5e6',
+  38:'8ee2ede7c37922bfdc261b11251d020e', 39:'c1b70d19b48ccb6ac95882f950287497', 40:'784da216da5f4c2f713f08d8a2a95fd6',
+  41:'8f4b622ef07ddd81c28f3f7f977b9fc0', 42:'abe5692326d54a817b7c3503938fa019', 43:'98874392bd75c4864541253ce8543d34',
+  44:'40bf41be8fa0dcb2c24c3744dc08d794', 52:'a6098400d144a596856f2ac1ecfd9544', 58:'08a44e3efe1313416f6b1bff2a9eb4e8',
+  59:'b2fea352767b0f41fe994d93586c039f', 60:'d4a6aaa552f92c4d6a0e716a20c71e10', 61:'7e4eff73f6c485f33bdfd1a9102b5703',
+  62:'bf537bd6b7fd4bfb7fa1ea9763a92374', 63:'1df4bcdccfceed0d4c5130bc9498c132', 64:'0f3a538be172f1f589a66d82e3ea4587',
+  65:'634636c98caef067c3b57480ec51bdc1', 66:'f17d5db0b52fcb88bccf99411076af76', 67:'98ee2555be31e4f372676f7da32d5433',
+  68:'cedacedfa25e5242e6d6fb65231f0fe9', 69:'22d2fecad8c46ea27353af51199a4cce', 70:'b6dba6f885707f9b42b9437b0d47c63e',
+  71:'935b64388b703cbd360ca93670d614e6', 72:'a7072ee4e3ff008490d5ade23daacccc', 73:'82ab48674b0e6ebc1ca24b7a46b60f30',
+  74:'bdd15ae27d0ef1d3ebf8f31b6e3f5d1b', 75:'10030a74f11da95bfdf2473a57b587c1'
+};
+
+const REELS_BY_CATEGORY = {
+  mode: [2,3,4,5,15,16,18,19,20,21,22,24,25,26,27,28,36,38,40,42,44],
+  lifestyle: [6,7,8,9,10,13,14,23,29,30,31,32,33,34,35,37,39,43],
+  evenementiel: [11,12,17,41],
+  food: [52,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73],
+  clinique: [74,75]
+};
+
+const PILL_ICONS = {
+  mode: '<path d="M12 3a2 2 0 1 1 2 2c-.6.3-1 .9-1 1.6V7l8 5.2c.6.4.3 1.3-.4 1.3H3.4c-.7 0-1-.9-.4-1.3L11 7v-.4c0-.7-.4-1.3-1-1.6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 18h18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  lifestyle: '<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  evenementiel: '<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.8 2.8M15.2 15.2 18 18M18 6l-2.8 2.8M8.8 15.2 6 18" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>',
+  food: '<path d="M6 2v7a2 2 0 0 0 4 0V2M8 9v13M16 2c-1.4 0-2.2 2-2.2 4.5S14.6 11 16 11s2.2-2 2.2-4.5S17.4 2 16 2Zm0 9v11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>',
+  clinique: '<rect x="3" y="3" width="18" height="18" rx="4" stroke="currentColor" stroke-width="1.4"/><path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>'
+};
+
+const CATEGORIES = [
+  { id: 'mode', label: 'Mode', desc: "Lookbooks et contenu produit pensés pour la matière, la coupe et la silhouette, pas juste le vêtement posé à plat." },
+  { id: 'lifestyle', label: 'Lifestyle', desc: "Immobilier, voyage, prise de parole, personal branding : tout ce qui raconte un quotidien désirable." },
+  { id: 'evenementiel', label: 'Événementiel', desc: "Mariages, soirées, lancements : l'émotion du moment, captée sans jamais paraître mise en scène." },
+  { id: 'food', label: 'Food', desc: "Cuisine, préparation, salle : le genre de plan qui donne faim avant même la légende." },
+  { id: 'clinique', label: 'Clinique', desc: "Un univers où la confiance se construit à l'image : rassurant, soigné, jamais froid. D'autres projets santé & bien-être arrivent prochainement.", comingSoon: "D'autres projets santé & bien-être arrivent prochainement." }
+];
+
+const ACCENT = '#D8C9A8';
+let activeCategory = 'mode';
+let switchTimer = null;
+
+function posterSrc(num){ return 'assets/posters/' + VIDEOS[num] + '.jpg'; }
+function videoSrc(num){ return 'assets/videos/' + VIDEOS[num] + '.mp4'; }
+
+function renderPills(){
+  const wrap = document.getElementById('zd-pills');
+  wrap.innerHTML = CATEGORIES.map((c) => {
+    const isActive = c.id === activeCategory;
+    const count = REELS_BY_CATEGORY[c.id].length;
+    const pillBg = isActive ? ACCENT : 'transparent';
+    const pillColor = isActive ? '#15130F' : '#C9C3B5';
+    const pillBorder = isActive ? ACCENT : 'rgba(244,241,233,.25)';
+    const countColor = isActive ? '#15130F' : '#716B5D';
+    return '<button type="button" data-cat="' + c.id + '" class="zd-pill" style="display:inline-flex;align-items:center;gap:9px;padding:13px 20px 13px 16px;border-radius:2px;border:1px solid ' + pillBorder + ';background:' + pillBg + ';color:' + pillColor + ';font-size:.92rem;font-family:\'Plus Jakarta Sans\',sans-serif;cursor:pointer">' +
+      '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" style="flex-shrink:0">' + PILL_ICONS[c.id] + '</svg>' +
+      '<span>' + c.label + '</span>' +
+      '<span style="opacity:.6;font-size:.72em;margin-left:5px;color:' + countColor + '">' + count + '</span>' +
+      '</button>';
+  }).join('');
+  wrap.querySelectorAll('[data-cat]').forEach((btn) => {
+    btn.addEventListener('click', () => pickCategory(btn.getAttribute('data-cat')));
+  });
+}
+
+function renderGrid(){
+  const cat = CATEGORIES.find((c) => c.id === activeCategory) || CATEGORIES[0];
+  const nums = REELS_BY_CATEGORY[cat.id] || [];
+  document.getElementById('zd-active-desc').textContent = cat.desc;
+
+  const grid = document.getElementById('zd-work-grid');
+  const comingSoon = document.getElementById('zd-coming-soon');
+
+  if (nums.length === 0) {
+    grid.style.display = 'none';
+    comingSoon.style.display = 'flex';
+    document.getElementById('zd-coming-soon-text').textContent = cat.comingSoon || '';
+    return;
+  }
+  grid.style.display = 'grid';
+  comingSoon.style.display = 'none';
+
+  grid.innerHTML = nums.map((num) =>
+    '<button type="button" class="zd-slot zd-video-slot" data-num="' + num + '" style="appearance:none;-webkit-appearance:none;padding:0;margin:0;text-align:left;font:inherit;color:inherit;display:block;width:100%;cursor:pointer">' +
+    '<img class="zd-video" src="' + posterSrc(num) + '" alt="" loading="lazy">' +
+    '<div class="zd-video-overlay" aria-hidden="true"></div>' +
+    '<div class="zd-play-badge" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M6 2H2v4M10 2h4v4M2 10v4h4M14 10v4h-4" stroke="#F4F1E9" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>' +
+    '</button>'
+  ).join('');
+  grid.querySelectorAll('[data-num]').forEach((btn) => {
+    btn.addEventListener('click', () => openLightbox(parseInt(btn.getAttribute('data-num'), 10)));
+  });
+}
+
+function pickCategory(id){
+  if (id === activeCategory) return;
+  const content = document.getElementById('zd-cat-content');
+  content.classList.add('zd-switching');
+  window.clearTimeout(switchTimer);
+  switchTimer = window.setTimeout(() => {
+    activeCategory = id;
+    renderPills();
+    renderGrid();
+    content.classList.remove('zd-switching');
+  }, 180);
+}
+
+/* ---------------- lightbox: real, playable video ---------------- */
+const lightbox = document.getElementById('zd-lightbox');
+const lightboxVideo = document.getElementById('zd-lightbox-video');
+
+function openLightbox(num){
+  lightboxVideo.poster = posterSrc(num);
+  lightboxVideo.src = videoSrc(num);
+  lightbox.hidden = false;
+  const playPromise = lightboxVideo.play();
+  if (playPromise && playPromise.catch) playPromise.catch(() => {});
+  document.getElementById('zd-lightbox-close').focus();
+}
+function closeLightbox(){
+  lightboxVideo.pause();
+  lightboxVideo.removeAttribute('src');
+  lightboxVideo.load();
+  lightbox.hidden = true;
+}
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.getElementById('zd-lightbox-close').addEventListener('click', closeLightbox);
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lightbox.hidden) closeLightbox(); });
+
+/* ---------------- contact form: builds a mailto: with the message pre-written ---------------- */
+function handleFormSubmit(){
+  const val = (id) => {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  };
+  const prenom = val('zd-form-prenom');
+  const nom = val('zd-form-nom');
+  const tel = val('zd-form-tel');
+  const projet = val('zd-form-projet');
+  if (!prenom && !nom && !projet) return;
+  const fullName = (prenom + ' ' + nom).trim();
+  const subject = 'Nouveau projet : ' + (fullName || 'via le site ZED Digital');
+  const body = [
+    'Prénom : ' + (prenom || '—'),
+    'Nom : ' + (nom || '—'),
+    'Téléphone : ' + (tel || '—'),
+    '',
+    'Quel est votre projet ?',
+    projet || '—'
+  ].join('\n');
+  window.location.href = 'mailto:contact@zed-collection.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+}
+document.getElementById('zd-form-submit').addEventListener('click', handleFormSubmit);
+
+/* ---------------- boot ---------------- */
+document.getElementById('zd-total-count').textContent = Object.keys(VIDEOS).length;
+renderPills();
+renderGrid();
+
+/* ---------------- scroll reveal ---------------- */
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (reduceMotion) {
+  document.querySelectorAll('.zd-reveal').forEach((el) => el.classList.add('zd-in'));
+} else {
+  document.querySelectorAll('[data-reveal-group]').forEach((group) => {
+    group.querySelectorAll('.zd-reveal').forEach((el, i) => { el.style.transitionDelay = (i * 70) + 'ms'; });
+  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('zd-in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.zd-reveal').forEach((el) => io.observe(el));
+}
+
+/* ---------------- hero cursor glow ---------------- */
+const hero = document.getElementById('hero');
+const glow = document.getElementById('zd-cursor-glow');
+if (hero && glow) {
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    glow.style.opacity = '1';
+    glow.style.transform = 'translate(' + (e.clientX - rect.left) + 'px,' + (e.clientY - rect.top) + 'px) translate(-50%,-50%)';
+  });
+  hero.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
+}
+</script>
+</body>
+</html>
